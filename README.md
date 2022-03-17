@@ -2,6 +2,8 @@
 
 This crate provides Rust Embedded HAL interfaces (GPIO, I2C and SPI) for Apache NuttX RTOS.
 
+For a sample NuttX Rust app, see [rust-i2c-nuttx](https://github.com/lupyuen/rust-i2c-nuttx)
+
 # GPIO Output
 
 ```rust
