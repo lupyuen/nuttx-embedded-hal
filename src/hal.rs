@@ -14,7 +14,7 @@ use embedded_hal::{
 use crate::{
     close, ioctl, read, usleep, write,
     i2c_msg_s, i2c_transfer_s, size_t, ssize_t,
-    GPIOC_WRITE, I2CIOC_TRANSFER, I2C_M_NOSTOP, I2C_M_READ, O_RDWR,
+    GPIOC_WRITE, I2CIOC_TRANSFER, I2C_M_READ, O_RDWR,
     String,
 };
 
@@ -58,7 +58,7 @@ impl i2c::Write for I2c {
 
                 //  For BL602: Register ID must be passed as I2C Sub Address
                 #[cfg(target_arch = "riscv32")]  //  If architecture is RISC-V 32-bit...
-                flags:     I2C_M_NOSTOP,  //  I2C Flags: Send I2C Sub Address
+                flags:     crate::I2C_M_NOSTOP,  //  I2C Flags: Send I2C Sub Address
                 
                 //  Otherwise pass Register ID as I2C Data
                 #[cfg(not(target_arch = "riscv32"))]  //  If architecture is not RISC-V 32-bit...
@@ -122,7 +122,7 @@ impl i2c::WriteRead for I2c {
 
                 //  For BL602: Register ID must be passed as I2C Sub Address
                 #[cfg(target_arch = "riscv32")]  //  If architecture is RISC-V 32-bit...
-                flags:     I2C_M_NOSTOP,  //  I2C Flags: Send I2C Sub Address
+                flags:     crate::I2C_M_NOSTOP,  //  I2C Flags: Send I2C Sub Address
                 
                 //  Otherwise pass Register ID as I2C Data
                 #[cfg(not(target_arch = "riscv32"))]  //  If architecture is not RISC-V 32-bit...
