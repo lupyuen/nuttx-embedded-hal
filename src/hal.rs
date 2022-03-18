@@ -451,7 +451,7 @@ impl Drop for InterruptPin {
     }
 }
 
-/// NuttX I2C Struct
+/// NuttX I2C Bus
 pub struct I2c {
     /// NuttX File Descriptor
     fd: i32,
@@ -459,35 +459,35 @@ pub struct I2c {
     frequency: u32,
 }
 
-/// NuttX SPI Struct
+/// NuttX SPI Bus
 pub struct Spi {
     /// NuttX File Descriptor
     fd: i32,
 }
 
-/// NuttX GPIO Input Struct
+/// NuttX GPIO Input
 pub struct InputPin {
     /// NuttX File Descriptor
     fd: i32,
 }
 
-/// NuttX GPIO Output Struct
+/// NuttX GPIO Output
 pub struct OutputPin {
     /// NuttX File Descriptor
     fd: i32,
 }
 
-/// NuttX GPIO Interrupt Struct
+/// NuttX GPIO Interrupt
 pub struct InterruptPin {
     /// NuttX File Descriptor
     fd: i32,
 }
 
-/// NuttX GPIO Unused Struct
+/// NuttX GPIO Unused
 pub struct UnusedPin {
 }
 
-/// NuttX Delay Struct
+/// NuttX Delay
 pub struct Delay;
 
 /// Open a file and return the file descriptor.

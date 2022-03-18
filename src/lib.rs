@@ -63,13 +63,21 @@ pub fn puts_format(args: fmt::Arguments<'_>) {
 pub type String = heapless::String::<64>;
 
 extern "C" {  //  Import POSIX Functions. TODO: Import with bindgen from https://github.com/lupyuen/incubator-nuttx/blob/rusti2c/include/unistd.h
+    /// Open a file path
     pub fn open(path: *const u8, oflag: i32, ...) -> i32;
+    /// Read from a file descriptor
     pub fn read(fd: i32, buf: *mut u8, count: size_t)    -> ssize_t;
+    /// Write to a file descriptor
     pub fn write(fd: i32, buf: *const u8, count: size_t) -> ssize_t;
+    /// Close a file descriptor
     pub fn close(fd: i32) -> i32;
+    /// Execute device commands
     pub fn ioctl(fd: i32, request: i32, ...) -> i32;  //  On NuttX: request is i32, not u64 like Linux
+    /// Sleep for a number of seconds
     pub fn sleep(secs: u32)  -> u32;
+    /// Sleep for a number of microseconds
     pub fn usleep(usec: u32) -> u32;
+    /// Exit the program
     pub fn exit(status: u32) -> !;
 }
 
