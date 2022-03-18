@@ -1,4 +1,4 @@
-//! Embedded HAL for NuttX
+//! Rust Embedded HAL for Apache NuttX RTOS
 
 use core::{
     str::FromStr,
@@ -18,7 +18,7 @@ use crate::{
     String,
 };
 
-/// NuttX I2C Read
+/// NuttX Implementation of I2C Read
 impl i2c::Read for I2c {
     /// TODO: Error Type
     type Error = ();
@@ -30,7 +30,7 @@ impl i2c::Read for I2c {
     }
 }
 
-/// NuttX I2C Write
+/// NuttX Implementation of I2C Write
 impl i2c::Write for I2c {
     /// TODO: Error Type
     type Error = ();
@@ -95,7 +95,7 @@ impl i2c::Write for I2c {
     }
 }
 
-/// NuttX I2C WriteRead
+/// NuttX Implementation of I2C WriteRead
 impl i2c::WriteRead for I2c {
     /// TODO: Error Type
     type Error = ();
@@ -159,7 +159,7 @@ impl i2c::WriteRead for I2c {
     }
 }
 
-/// NuttX SPI Transfer
+/// NuttX Implementation of SPI Transfer
 impl spi::Transfer<u8> for Spi {
     /// TODO: Error Type
     type Error = ();
@@ -183,7 +183,7 @@ impl spi::Transfer<u8> for Spi {
     }
 }
 
-/// NuttX SPI Write
+/// NuttX Implementation of SPI Write
 impl spi::Write<u8> for Spi{
     /// TODO: Error Type
     type Error = ();
@@ -199,7 +199,7 @@ impl spi::Write<u8> for Spi{
     }
 }
 
-/// Set NuttX Output Pin
+/// NuttX Implementation of GPIO Output
 impl v2::OutputPin for OutputPin {
     /// TODO: Error Type
     type Error = ();
@@ -223,7 +223,7 @@ impl v2::OutputPin for OutputPin {
     }
 }
 
-/// Read NuttX Input Pin
+/// NuttX Implementation of GPIO Input
 impl v2::InputPin for InputPin {
     /// TODO: Error Type
     type Error = ();
@@ -248,7 +248,7 @@ impl v2::InputPin for InputPin {
     }
 }
 
-/// Read NuttX Interrupt Pin
+/// NuttX Implementation of GPIO Interrupt
 impl v2::InputPin for InterruptPin {
     /// TODO: Error Type
     type Error = ();
@@ -273,7 +273,7 @@ impl v2::InputPin for InterruptPin {
     }
 }
 
-/// Set NuttX Unused Pin
+/// NuttX Implementation of GPIO Unused
 impl v2::OutputPin for UnusedPin {
     /// TODO: Error Type
     type Error = ();
@@ -289,7 +289,7 @@ impl v2::OutputPin for UnusedPin {
     }
 }
 
-/// NuttX Delay in Microseconds
+/// NuttX Implementation of Delay in Microseconds
 impl DelayUs<u8> for Delay {
     /// Sleep for us microseconds
     fn delay_us(&mut self, us: u8) {
@@ -297,7 +297,7 @@ impl DelayUs<u8> for Delay {
     }
 }
 
-/// NuttX Delay in Microseconds
+/// NuttX Implementation of Delay in Microseconds
 impl DelayUs<u16> for Delay {
     /// Sleep for us microseconds
     fn delay_us(&mut self, us: u16) {
@@ -305,7 +305,7 @@ impl DelayUs<u16> for Delay {
     }
 }
 
-/// NuttX Delay in Microseconds
+/// NuttX Implementation of Delay in Microseconds
 impl DelayUs<u32> for Delay {
     /// Sleep for us microseconds
     fn delay_us(&mut self, us: u32) {
@@ -313,7 +313,7 @@ impl DelayUs<u32> for Delay {
     }
 }
 
-/// NuttX Delay in Milliseconds
+/// NuttX Implementation of Delay in Milliseconds
 impl DelayMs<u8> for Delay {
     /// Sleep for ms milliseconds
     fn delay_ms(&mut self, ms: u8) {
@@ -321,7 +321,7 @@ impl DelayMs<u8> for Delay {
     }
 }
 
-/// NuttX Delay in Milliseconds
+/// NuttX Implementation of Delay in Milliseconds
 impl DelayMs<u16> for Delay {
     /// Sleep for ms milliseconds
     fn delay_ms(&mut self, ms: u16) {
@@ -329,7 +329,7 @@ impl DelayMs<u16> for Delay {
     }
 }
 
-/// NuttX Delay in Milliseconds
+/// NuttX Implementation of Delay in Milliseconds
 impl DelayMs<u32> for Delay {
     /// Sleep for ms milliseconds
     fn delay_ms(&mut self, ms: u32) {
@@ -337,7 +337,7 @@ impl DelayMs<u32> for Delay {
     }
 }
 
-/// New NuttX I2C Bus
+/// NuttX Implementation of I2C Bus
 impl I2c {
     /// Create an I2C Bus from a Device Path (e.g. "/dev/i2c0")
     #[allow(dead_code)]
@@ -351,7 +351,7 @@ impl I2c {
     }
 }
 
-/// New NuttX SPI Bus
+/// NuttX Implementation of SPI Bus
 impl Spi {
     /// Create an SPI Bus from a Device Path (e.g. "/dev/spitest0")
     #[allow(dead_code)]
@@ -365,7 +365,7 @@ impl Spi {
     }
 }
 
-/// New NuttX GPIO Input
+/// NuttX Implementation of GPIO Input
 impl InputPin {
     /// Create a GPIO Input Pin from a Device Path (e.g. "/dev/gpio0")
     #[allow(dead_code)]
@@ -379,7 +379,7 @@ impl InputPin {
     }
 }
 
-/// New NuttX GPIO Output
+/// NuttX Implementation of GPIO Output
 impl OutputPin {
     /// Create a GPIO Output Pin from a Device Path (e.g. "/dev/gpio1")
     #[allow(dead_code)]
@@ -393,7 +393,7 @@ impl OutputPin {
     }
 }
 
-/// New NuttX GPIO Interrupt
+/// NuttX Implementation of GPIO Interrupt
 impl InterruptPin {
     /// Create a GPIO Interrupt Pin from a Device Path (e.g. "/dev/gpio2")
     #[allow(dead_code)]
@@ -407,7 +407,7 @@ impl InterruptPin {
     }
 }
 
-/// New NuttX GPIO Unused
+/// NuttX Implementation of GPIO Unused
 impl UnusedPin {
     /// Create a GPIO Unused Pin
     #[allow(dead_code)]
@@ -417,7 +417,7 @@ impl UnusedPin {
     }
 }
 
-/// Drop NuttX SPI Bus
+/// NuttX Implementation of SPI Bus
 impl Drop for I2c {
     /// Close the SPI Bus
     fn drop(&mut self) {
@@ -425,7 +425,7 @@ impl Drop for I2c {
     }
 }
 
-/// Drop NuttX SPI Bus
+/// NuttX Implementation of SPI Bus
 impl Drop for Spi {
     /// Close the SPI Bus
     fn drop(&mut self) {
@@ -433,7 +433,7 @@ impl Drop for Spi {
     }
 }
 
-/// Drop NuttX GPIO Input
+/// NuttX Implementation of GPIO Input
 impl Drop for InputPin {
     /// Close the GPIO Input
     fn drop(&mut self) {
@@ -441,7 +441,7 @@ impl Drop for InputPin {
     }
 }
 
-/// Drop NuttX GPIO Output
+/// NuttX Implementation of GPIO Output
 impl Drop for OutputPin {
     /// Close the GPIO Output
     fn drop(&mut self) {
@@ -449,7 +449,7 @@ impl Drop for OutputPin {
     }
 }
 
-/// Drop NuttX GPIO Interrupt
+/// NuttX Implementation of GPIO Interrupt
 impl Drop for InterruptPin {
     /// Close the GPIO Interrupt
     fn drop(&mut self) {
