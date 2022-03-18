@@ -340,7 +340,6 @@ impl DelayMs<u32> for Delay {
 /// NuttX Implementation of I2C Bus
 impl I2c {
     /// Create an I2C Bus from a Device Path (e.g. "/dev/i2c0")
-    #[allow(dead_code)]
     pub fn new(path: &str, frequency: u32) -> Result<Self, i32> {
         //  Open the NuttX Device Path (e.g. "/dev/spitest0") for read-write
         let fd = open(path, O_RDWR);
@@ -354,7 +353,6 @@ impl I2c {
 /// NuttX Implementation of SPI Bus
 impl Spi {
     /// Create an SPI Bus from a Device Path (e.g. "/dev/spitest0")
-    #[allow(dead_code)]
     pub fn new(path: &str) -> Result<Self, i32> {
         //  Open the NuttX Device Path (e.g. "/dev/spitest0") for read-write
         let fd = open(path, O_RDWR);
@@ -368,7 +366,6 @@ impl Spi {
 /// NuttX Implementation of GPIO Input
 impl InputPin {
     /// Create a GPIO Input Pin from a Device Path (e.g. "/dev/gpio0")
-    #[allow(dead_code)]
     pub fn new(path: &str) -> Result<Self, i32> {
         //  Open the NuttX Device Path (e.g. "/dev/gpio0") for read-write
         let fd = open(path, O_RDWR);
@@ -382,7 +379,6 @@ impl InputPin {
 /// NuttX Implementation of GPIO Output
 impl OutputPin {
     /// Create a GPIO Output Pin from a Device Path (e.g. "/dev/gpio1")
-    #[allow(dead_code)]
     pub fn new(path: &str) -> Result<Self, i32> {
         //  Open the NuttX Device Path (e.g. "/dev/gpio1") for read-write
         let fd = open(path, O_RDWR);
@@ -396,7 +392,6 @@ impl OutputPin {
 /// NuttX Implementation of GPIO Interrupt
 impl InterruptPin {
     /// Create a GPIO Interrupt Pin from a Device Path (e.g. "/dev/gpio2")
-    #[allow(dead_code)]
     pub fn new(path: &str) -> Result<Self, i32> {
         //  Open the NuttX Device Path (e.g. "/dev/gpio2") for read-write
         let fd = open(path, O_RDWR);
@@ -410,7 +405,6 @@ impl InterruptPin {
 /// NuttX Implementation of GPIO Unused
 impl UnusedPin {
     /// Create a GPIO Unused Pin
-    #[allow(dead_code)]
     pub fn new() -> Result<Self, i32> {
         //  Return the pin
         Ok(Self {})
