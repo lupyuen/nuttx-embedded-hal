@@ -20,8 +20,8 @@ use crate::{
 
 /// NuttX Implementation of I2C Read
 impl i2c::Read for I2c {
-    /// TODO: Error Type
-    type Error = ();
+    /// Error Type
+    type Error = i32;
 
     /// TODO: Read `buf` from I2C Port
     fn read(&mut self, _addr: u8, _buf: &mut [u8]) -> Result<(), Self::Error> {
@@ -32,8 +32,8 @@ impl i2c::Read for I2c {
 
 /// NuttX Implementation of I2C Write
 impl i2c::Write for I2c {
-    /// TODO: Error Type
-    type Error = ();
+    /// Error Type
+    type Error = i32;
 
     /// Write `buf` to I2C Port.
     /// We assume this is a Write I2C Register operation, with Register ID at `buf[0]`.
@@ -97,8 +97,8 @@ impl i2c::Write for I2c {
 
 /// NuttX Implementation of I2C WriteRead
 impl i2c::WriteRead for I2c {
-    /// TODO: Error Type
-    type Error = ();
+    /// Error Type
+    type Error = i32;
 
     /// Write `wbuf` to I2C Port and read `rbuf` from I2C Port.
     /// We assume this is a Read I2C Register operation, with Register ID at `wbuf[0]`.
@@ -161,8 +161,8 @@ impl i2c::WriteRead for I2c {
 
 /// NuttX Implementation of SPI Transfer
 impl spi::Transfer<u8> for Spi {
-    /// TODO: Error Type
-    type Error = ();
+    /// Error Type
+    type Error = i32;
 
     /// Transfer SPI data
     fn transfer<'w>(&mut self, words: &'w mut [u8]) -> Result<&'w [u8], Self::Error> {
@@ -185,8 +185,8 @@ impl spi::Transfer<u8> for Spi {
 
 /// NuttX Implementation of SPI Write
 impl spi::Write<u8> for Spi{
-    /// TODO: Error Type
-    type Error = ();
+    /// Error Type
+    type Error = i32;
 
     /// Write SPI data
     fn write(&mut self, words: &[u8]) -> Result<(), Self::Error> {
@@ -201,8 +201,8 @@ impl spi::Write<u8> for Spi{
 
 /// NuttX Implementation of GPIO Output
 impl v2::OutputPin for OutputPin {
-    /// TODO: Error Type
-    type Error = ();
+    /// Error Type
+    type Error = i32;
 
     /// Set the GPIO Output to High
     fn set_high(&mut self) -> Result<(), Self::Error> {
@@ -225,8 +225,8 @@ impl v2::OutputPin for OutputPin {
 
 /// NuttX Implementation of GPIO Input
 impl v2::InputPin for InputPin {
-    /// TODO: Error Type
-    type Error = ();
+    /// Error Type
+    type Error = i32;
 
     /// Return true if GPIO Input is high
     fn is_high(&self) -> Result<bool, Self::Error> {
@@ -250,8 +250,8 @@ impl v2::InputPin for InputPin {
 
 /// NuttX Implementation of GPIO Interrupt
 impl v2::InputPin for InterruptPin {
-    /// TODO: Error Type
-    type Error = ();
+    /// Error Type
+    type Error = i32;
 
     /// Return true if GPIO Input is high
     fn is_high(&self) -> Result<bool, Self::Error> {
@@ -275,8 +275,8 @@ impl v2::InputPin for InterruptPin {
 
 /// NuttX Implementation of GPIO Unused
 impl v2::OutputPin for UnusedPin {
-    /// TODO: Error Type
-    type Error = ();
+    /// Error Type
+    type Error = i32;
 
     /// Set the pin to high
     fn set_high(&mut self) -> Result<(), Self::Error> {
