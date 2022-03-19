@@ -6,6 +6,12 @@ For a sample NuttX Rust app, see [rust-i2c-nuttx](https://github.com/lupyuen/rus
 
 If you find this crate useful, please support me on [GitHub Sponsors](https://github.com/sponsors/lupyuen)
 
+Read the articles...
+
+-   ["Rust talks I2C on Apache NuttX RTOS"](https://lupyuen.github.io/articles/rusti2c)
+
+-   ["Rust on Apache NuttX OS"](https://lupyuen.github.io/articles/rust2)
+
 # GPIO Output
 
 ```rust
