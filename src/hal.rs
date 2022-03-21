@@ -411,9 +411,9 @@ impl UnusedPin {
     }
 }
 
-/// NuttX Implementation of SPI Bus
+/// NuttX Implementation of I2C Bus
 impl Drop for I2c {
-    /// Close the SPI Bus
+    /// Close the I2C Bus
     fn drop(&mut self) {
         unsafe { close(self.fd) };
     }
