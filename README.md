@@ -34,6 +34,8 @@ gpio.set_high()
 
 [(Documentation)](https://docs.rs/nuttx-embedded-hal/latest/nuttx_embedded_hal/struct.OutputPin.html)
 
+[(Implementation)](https://lupyuen.github.io/articles/rust2#gpio-hal)
+
 # GPIO Input
 
 ```rust
@@ -104,9 +106,17 @@ i2c.write_read(
 
 //  Print the register value
 println!("Register value is 0x{:02x}", buf[0]);
+
+//  Write 0xA0 to Register 0xF5
+i2c.write(
+    0x77,          //  I2C Address
+    &[0xF5, 0xA0]  //  Register ID and value
+).expect("write register failed");
 ```
 
 [(Documentation)](https://docs.rs/nuttx-embedded-hal/latest/nuttx_embedded_hal/struct.I2c.html)
+
+[(Implementation)](https://lupyuen.github.io/articles/rusti2c#nuttx-embedded-hal)
 
 # SPI
 
@@ -150,6 +160,8 @@ cs.set_high()
 ```
 
 [(Documentation)](https://docs.rs/nuttx-embedded-hal/latest/nuttx_embedded_hal/struct.Spi.html)
+
+[(Implementation)](https://lupyuen.github.io/articles/rust2#spi-hal)
 
 # Delay
 
