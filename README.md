@@ -1,6 +1,6 @@
 # Rust Embedded HAL for Apache NuttX RTOS
 
-This crate provides Rust Embedded HAL interfaces (GPIO, I2C and SPI) for Apache NuttX RTOS.
+This crate provides Rust Embedded HAL interfaces (GPIO, I2C, SPI and Delay) for Apache NuttX RTOS.
 
 For a sample NuttX Rust app, see [rust-i2c-nuttx](https://github.com/lupyuen/rust-i2c-nuttx)
 
@@ -15,6 +15,9 @@ Read the articles...
 # GPIO Output
 
 ```rust
+//  Import Output Pin Trait
+use embedded_hal::digital::v2::OutputPin;
+
 //  Open /dev/gpio1 for GPIO Output
 let mut gpio = nuttx_embedded_hal::OutputPin
     ::new("/dev/gpio1")
@@ -29,27 +32,60 @@ gpio.set_high()
     .expect("set gpio failed");
 ```
 
+[(Documentation)](https://docs.rs/nuttx-embedded-hal/latest/nuttx_embedded_hal/struct.OutputPin.html)
+
 # GPIO Input
 
 ```rust
+//  Import Input Pin Trait
+use embedded_hal::digital::v2::InputPin;
+
 //  Open /dev/gpio0 for GPIO Input
 let gpio = nuttx_embedded_hal::InputPin
     ::new("/dev/gpio0")
     .expect("open gpio failed");
+
+//  True if GPIO is High
+let is_high = gpio.is_high()
+    .expect("read gpio failed");
+
+//  True if GPIO is Low
+let is_low = gpio.is_low()
+    .expect("read gpio failed");
 ```
+
+[(Documentation)](https://docs.rs/nuttx-embedded-hal/latest/nuttx_embedded_hal/struct.InputPin.html)
 
 # GPIO Interrupt
 
+Interrupt callbacks are not supported yet.
+
 ```rust
+//  Import Input Pin Trait
+use embedded_hal::digital::v2::InputPin;
+
 //  Open /dev/gpio2 for GPIO Interrupt
 let gpio = nuttx_hal::InterruptPin
     ::new("/dev/gpio2");
     .expect("open gpio failed");
+
+//  True if GPIO is High
+let is_high = gpio.is_high()
+    .expect("read gpio failed");
+
+//  True if GPIO is Low
+let is_low = gpio.is_low()
+    .expect("read gpio failed");
 ```
+
+[(Documentation)](https://docs.rs/nuttx-embedded-hal/latest/nuttx_embedded_hal/struct.InterruptPin.html)
 
 # I2C
 
 ```rust
+//  Import I2C Trait
+use embedded_hal::blocking::i2c;
+
 //  Open I2C Port /dev/i2c0
 let mut i2c = nuttx_embedded_hal::I2c::new(
     "/dev/i2c0",  //  I2C Port
@@ -70,13 +106,20 @@ i2c.write_read(
 println!("Register value is 0x{:02x}", buf[0]);
 ```
 
+[(Documentation)](https://docs.rs/nuttx-embedded-hal/latest/nuttx_embedded_hal/struct.I2c.html)
+
 # SPI
 
 The SPI interface requires the SPI Test Driver (/dev/spitest0) to be installed:
 
-https://github.com/lupyuen/incubator-nuttx/tree/master/drivers/rf
+-   [SPI Test Driver](https://github.com/lupyuen/incubator-nuttx/tree/master/drivers/rf)
+
+SPI settings are configured in the [SPI Test Driver](https://github.com/lupyuen/incubator-nuttx/blob/master/drivers/rf/spi_test_driver.c#L39-L58).
 
 ```rust
+//  Import SPI Trait
+use embedded_hal::blocking::spi;
+
 //  Open SPI Bus /dev/spitest0
 let mut spi = nuttx_embedded_hal::Spi
     ::new("/dev/spitest0")
@@ -105,3 +148,20 @@ for i in 0..data.len() {
 cs.set_high()
     .expect("cs failed");
 ```
+
+[(Documentation)](https://docs.rs/nuttx-embedded-hal/latest/nuttx_embedded_hal/struct.Spi.html)
+
+# Delay
+
+```rust
+//  Import Delay Trait (milliseconds)
+use embedded_hal::blocking::delay::DelayMs;
+
+//  Get a Delay Interface
+let mut delay = nuttx_embedded_hal::Delay;
+
+//  Wait 500 milliseconds
+delay.delay_ms(500_u32);
+```
+
+[(Documentation)](https://docs.rs/nuttx-embedded-hal/latest/nuttx_embedded_hal/struct.Delay.html)
