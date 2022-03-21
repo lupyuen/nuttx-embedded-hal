@@ -341,7 +341,7 @@ impl DelayMs<u32> for Delay {
 impl I2c {
     /// Create an I2C Bus from a Device Path (e.g. "/dev/i2c0")
     pub fn new(path: &str, frequency: u32) -> Result<Self, i32> {
-        //  Open the NuttX Device Path (e.g. "/dev/spitest0") for read-write
+        //  Open the NuttX Device Path (e.g. "/dev/i2c0") for read-write
         let fd = open(path, O_RDWR);
         if fd < 0 { return Err(fd) }
 
